@@ -12,10 +12,20 @@ Enzyme.configure({adapter: new EnzymeAdapter() });
  * @param {any} state - initial state for setup
  * @returns {ShallowWrapper} 
  */
+
 const setup = (props={}, state=null) =>{
   return shallow(<App {...props} />)
 } //setup app to take props and state 
 
+/**
+ * Return ShallowWrapper containing node(s) with the given data-test value
+ * @param {ShallowWrapper} wrapper - Enzyme shallow wrapper to search within
+ * @param {string} val - Value of data-test attribute for search 
+ * 
+ */
+const findByTestAttr = (wrapper, val)=>{
+  return 
+}
 test('renders without crashing', () => {
   const wrapper = shallow(<App />); //data-test attribute
   const appComponent = wrapper.find("[data-test='component-app']")

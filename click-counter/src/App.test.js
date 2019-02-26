@@ -5,6 +5,13 @@ import App from './App';
 
 Enzyme.configure({adapter: new EnzymeAdapter() });
 
+/**
+ * Factory function to create a ShallowWrapper for the App Component
+ * @function setup
+ * @param {object } props - Component props specific to this setup
+ * @param {any} state - initial state for setup
+ * @returns {ShallowWrapper} 
+ */
 const setup = (props={}, state=null) =>{
   return shallow(<App {...props} />)
 } //setup app to take props and state 

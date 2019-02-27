@@ -63,3 +63,44 @@ test('clicking button increments counter display', ()=>{
   const counterDisplay = findByTestAttr(wrapper, 'counter-display');
   expect(counterDisplay.text()).toContain(counter + 1)
 });
+
+test('clicking button decrements counter display', ()=>{
+  const counter = 7;
+  const wrapper = setup(null, {counter})
+  const button = findByTestAttr(wrapper, "decrement-button");
+  button.simulate('click');
+  wrapper.update();
+
+  const counterDisplay = findByTestAttr(wrapper, 'counter-display');
+
+  expect(counterDisplay.text()).toContain(counter-1);
+})
+
+test('error displays if counter attempts to decrement below 0', ()=>{
+  const counter = 0;
+  const wrapper = setup({counter: 0}, {counter});
+  const button = findByTestAttr(wrapper, 'decrement-button');
+  button.simulate('click');
+  wrapper.update()
+  
+  const error = findByTestAttr(wrapper, 'error');
+
+  const counterDisplay = findByTestAttr(wrapper, 'counter-display');
+  expect(error.text()).toContain("Error: ")
+  expect(counterDisplay.text()).toContain(0);
+});
+
+test('error does not display if counter > 0', ()=>{
+  const counter = 1;
+  const wrapper = setup({counter: 0}, {counter});
+  const incrementButton = findByTestAttr(wrapper, 'increment-button');
+  incrementButton.simulate('click');
+  wrapper.update()
+  const container = findByTestAttr(wrapper, 'component-app')
+  const error = wrapper.find("#error")
+  expect(container.exists(error)).toBe(false);
+})
+
+test('error clears after increment button is pressed', ()=>{
+
+});

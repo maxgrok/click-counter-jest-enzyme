@@ -1,6 +1,6 @@
-In Click-Counter Project: 
+In Click-Counter Project: <br/><br/>
 
-Accomplished: 
+Accomplished: <br/>
 --> Shallow() function used to render components <br/>
 --> Tested required DOM elements were rendered using find()<br/>
 --> Tested state using Enzyme's setState() && state()<br/>
